@@ -237,44 +237,161 @@ for num in numbers:
 print("List after removing duplicates:", unique_numbers)
 
 # Count frequency of characters
+text= input("Enter a string to count frequency of characters: ")
+frequency = {}
+for ch in text:
+    if ch in frequency:
+        frequency[ch] += 1
+    else:
+        frequency[ch] = 1   
 
-
-
-
+print("Character frequency:", frequency)
 
 # Linear search
-
-
+n=int(input("Enter number of elements for linear search: "))
+numbers = []
+for i in range(n):
+    numbers.append(int(input("Enter element: ")))
+target = int(input("Enter element to search: "))
+found = False
+for num in numbers:
+    if num == target:
+        found = True
+        break   
+if found:
+    print("Element found")
+else:
+    print("Element not found")
 
 # Check if list is sorted
-
-
+n=int(input("Enter number of elements to check if list is sorted: "))
+numbers = []
+for i in range(n):
+    numbers.append(int(input("Enter element: ")))
+is_sorted = True    
+for i in range(1, n):
+    if numbers[i] < numbers[i - 1]:
+        is_sorted = False
+        break
+if is_sorted:
+    print("List is sorted")
+else:
+    print("List is not sorted")
 
 # Find second largest element
-
-
+n = int(input("Enter number of elements to find second largest: "))
+numbers = []
+for i in range(n):
+    numbers.append(int(input("Enter element: ")))   
+first = second = float('-inf')
+for num in numbers:
+    if num > first:
+        second = first
+        first = num
+    elif first > num > second:
+        second = num    
+print("Second largest element:", second)
 
 # Count even and odd numbers
+n=int(input("Enter number of elements to count even and odd numbers: "))
+numbers = []
+for i in range(n):
+    numbers.append(int(input("Enter element: ")))
+even_count = 0
+odd_count = 0
+for num in numbers:
+    if num % 2 == 0:
+        even_count += 1
+    else:
+        odd_count += 1
+print("Even numbers count:", even_count)
+print("Odd numbers count:", odd_count)
 
-
-
-
-# Find GCD of two numbers
-
-
-
-
-
+# Find GCD of two numbers    (Greatest Common Divisor)
+a = int(input("Enter first number to find GCD: "))
+b = int(input("Enter second number to find GCD: "))
+x = a   # store original values
+y = b
+while b:
+    a, b = b, a % b
+gcd = a
+lcm = (x * y) // gcd
+print("GCD is:", gcd)
+print("LCM is:", lcm)
 
 # Menu-driven calculator
-
-
-
+while True:
+    print("Menu:")
+    print("1. Add")
+    print("2. Subtract")
+    print("3. Multiply")
+    print("4. Divide")
+    print("5. Exit")
+    
+    choice = int(input("Enter your choice: "))
+    
+    if choice == 5:
+        print("Exiting...")
+        break
+    
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
+    
+    if choice == 1:
+        print("Result:", num1 + num2)
+    elif choice == 2:
+        print("Result:", num1 - num2)
+    elif choice == 3:
+        print("Result:", num1 * num2)
+    elif choice == 4:
+        if num2 != 0:
+            print("Result:", num1 / num2)
+        else:
+            print("Error: Division by zero")
+    else:
+        print("Invalid choice") 
 
 # ATM simulation
+balance = 1000
+while True:
+    print("Menu:")
+    print("1. Check Balance")
+    print("2. Deposit")
+    print("3. Withdraw")
+    print("4. Exit")
 
+    choice = int(input("Enter your choice: "))
 
-
+    if choice == 1:
+        print("Your balance is:", balance)
+    elif choice == 2:
+        amount = float(input("Enter amount to deposit: "))
+        balance += amount
+        print("Amount deposited successfully.")
+    elif choice == 3:
+        amount = float(input("Enter amount to withdraw: "))
+        if amount <= balance:
+            balance -= amount
+            print("Amount withdrawn successfully.")
+        else:
+            print("Insufficient funds.")
+    elif choice == 4:
+        print("Exiting...")
+        break
+    else:
+        print("Invalid choice")
 
 # Guess the number game
-
+import random
+number_to_guess = random.randint(1, 100)
+attempts = 0    
+while True:
+    guess = int(input("Guess the number (between 1 and 100): "))
+    attempts += 1
+    if guess < number_to_guess:
+        print("Too low!")
+    elif guess > number_to_guess:
+        print("Too high!")
+    else:
+        print("Congratulations! You've guessed the number in", attempts, "attempts.")
+        break
